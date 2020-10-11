@@ -29,3 +29,8 @@ module "vpc" {
   subnet4_secondary_range_name = "cf-sub-4-secondary"
   subnet4_cidr_secondary       = "10.0.8.0/24"
 }
+
+module "compute" {
+  source     = "./modules/compute"
+  depends_on = [module.vpc]
+}

@@ -15,7 +15,7 @@ resource "google_compute_disk" "private_disk1" {
 resource "google_compute_instance" "public_instance" {
   name = var.public_compute_name
   machine_type = var.machine_type
-  zone = var.gcp_zone_1
+  zone = var."${module.vpc.}"
   tags = ["ssh","http"]
 
   boot_disk {

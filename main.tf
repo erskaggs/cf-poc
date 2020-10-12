@@ -3,7 +3,7 @@ module "vpc" {
 
   vpc_name   = "cf-vpc"
   route_mode = "GLOBAL"
-  project_id = "{var.project_id}"
+  project_id = var.project_id
 
   subnet1                      = "cf-sub-1"
   subnet1_cidr                 = "10.0.0.0/24"
@@ -32,5 +32,23 @@ module "vpc" {
 
 module "compute" {
   source     = "./modules/compute"
+  project_id = var.project_id
   depends_on = [module.vpc]
+
+  public_compute_name  = "public_compute"
+  public_compute_type  = "n2-standard-2"
+  public_compute_image = "rhel-cloud/rhel-8"
+
+  public_disk_name = "public_disk"
+  public_disk_type = "pd-standard"
+  public_disk_size = "20"
+
+  private_compute_name  = "private_compute"
+  private_compute_type  = "n2-standard-2"
+  private_compute_image = "rhel-cloud/rhel-8"
+
+  private_disk_name = "private_disk"
+  private_disk_type = "pd-standard"
+  private_disk_size = "20"
+
 }

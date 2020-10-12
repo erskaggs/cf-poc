@@ -14,26 +14,26 @@ resource "google_compute_disk" "private_disk1" {
 
 resource "google_compute_instance" "public_instance" {
   name         = var.public_compute_name
-  machine_type = var.machine_type
+  machine_type = var.public_compute_type
   zone         = "${module.vpc.subnetwork-1.region}-a"
   tags         = ["ssh", "http"]
 
   boot_disk {
     initialize_params {
-      image = var.compute_image
+      image = var.public_compute_image
     }
   }
 
   network_interface {
-    network    = module.vpc.vpc_network.name
-    subnetwork = module.vpc.subnetwork-1.name
+    network    = module.vpc.network_name
+    subnetwork = module.vpc.subnet1
 
     access_config {}
   }
 }
 resource "google_compute_instance" "private_instance" {
   name         = var.private_compute_name
-  machine_type = var.private_machine_type
+  machine_type = var.private_compute_type
   zone         = "${module.vpc.subnetwork-3.region}-a"
   tags         = ["ssh", "http"]
 

@@ -1,3 +1,8 @@
+variable "project_id" {
+  type        = string
+  description = "project id of where you want the compute instances/disks to go"
+}
+
 #Public compute disk variables
 variable "public_disk_name" {
   type        = string
@@ -32,7 +37,7 @@ variable "public_compute_name" {
   type        = string
   description = "name of the compute instance"
 }
-variable "public_machine_type" {
+variable "public_compute_type" {
   type        = string
   description = "what type of compute instance to use"
   default     = "n2-standard-2"
@@ -48,7 +53,7 @@ variable "private_compute_name" {
   type        = string
   description = "name of the compute instance"
 }
-variable "private_machine_type" {
+variable "private_compute_type" {
   type        = string
   description = "what type of compute instance to use"
   default     = "n2-standard-2"

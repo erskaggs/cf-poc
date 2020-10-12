@@ -126,3 +126,9 @@ variable "subnet4_cidr_secondary" {
   type        = string
   description = "cidr block notation of subnet4 secondary range, i.e. 10.0.0.0/24"
 }
+
+# Cloud nat router variables
+variable "nat_name" {
+  type        = string
+  description = "name of the nat router"
+}

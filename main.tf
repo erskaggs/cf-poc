@@ -1,9 +1,10 @@
 module "vpc" {
   source = "./modules/vpc"
 
+  nat_name   = "web1-nat"
   vpc_name   = "cf-vpc"
   route_mode = "GLOBAL"
-  project_id = var.project_id
+  project_id = "coalfire-poc"
 
   subnet1_name                 = "cf-sub-1"
   subnet1_cidr                 = "10.0.0.0/24"
@@ -50,7 +51,7 @@ module "compute" {
   private_network = module.vpc.network_name
   private_subnet  = module.vpc.subnet3_name
 
-  public_compute_name  = "public_compute"
+  public_compute_name  = "public-compute"
   public_compute_type  = "n2-standard-2"
   public_compute_image = "rhel-cloud/rhel-8"
 
@@ -58,7 +59,7 @@ module "compute" {
   public_disk_type = "pd-standard"
   public_disk_size = "20"
 
-  private_compute_name  = "private_compute"
+  private_compute_name  = "private-compute"
   private_compute_type  = "n2-standard-2"
   private_compute_image = "rhel-cloud/rhel-8"
 

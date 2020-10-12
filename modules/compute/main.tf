@@ -15,7 +15,7 @@ resource "google_compute_disk" "private_disk1" {
 resource "google_compute_instance" "public_instance" {
   name         = var.public_compute_name
   machine_type = var.public_compute_type
-  zone         = "${var.public_region1}-a"
+  zone         = "${var.public_region1}-b"
   tags         = ["ssh", "http", "https"]
 
   boot_disk {
@@ -35,7 +35,7 @@ resource "google_compute_instance" "private_instance" {
   name         = var.private_compute_name
   machine_type = var.private_compute_type
   zone         = "${var.private_region1}-a"
-  tags         = ["http", "https"]
+  tags         = ["http", "https", "ssh"]
 
   boot_disk {
     initialize_params {
@@ -49,4 +49,18 @@ resource "google_compute_instance" "private_instance" {
     subnetwork = var.private_subnet
 
   }
+}
+
+resource "google_compute_attached_disk" "public_compute" {
+  disk     = google_compute_disk.public_disk1.self_link
+  instance = google_compute_instance.public_instance.self_link
+
+  depends_on = [google_compute_instance.public_instance]
+}
+
+resource "google_compute_attached_disk" "private_compute" {
+  disk     = google_compute_disk.private_disk1.self_link
+  instance = google_compute_instance.private_instance.self_link
+
+  depends_on = [google_compute_instance.private_instance]
 }

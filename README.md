@@ -15,6 +15,8 @@ While the client POC called for folders and service projects, this was not imple
 
 Next I decided on what parts should become a module and what resources should be grouped in those modules. There are a lot of modules that are already created on the internet but wanted to create custom modules for this POC as to only use what is really needed and for a way to allow the customer to look at simpler modules that only did the necessity of what is being asked for. All modules are housed within this repo for ease of use during a POC.
 
+All variables used are documented within the modules. Going forward would have descriptions of all variables needed within the main repo as modules would be moved to their own repos.
+
 ### Modules
 
 - The VPC module is used to create the vpc itself along with all subnetworks that are to be included into the vpc. This module also creates the nat router and gateway.
@@ -34,6 +36,8 @@ VPC and compute were the only modules that have outputs created for them. This w
 Here's a list of what should be done for moving forward with this to make it more robust and have the ability to become more flexible.
 
 - Move all modules into their own repos. This will allow each module to be developed independently and have the ability to be locked at specific version to be upgraded when the project/application is needing the additional features.
+
+- Create a variables description/documentation for all variables needed to be able to actually deploy this POC. This will become necessary once all modules are in their own repos.
 
 - Create the additional output values for each modules as stated before.
 

@@ -5,6 +5,7 @@
 3. [Outputs from modules](#outputs-from-modules)
 4. [Future](#future)
 5. [Image of ssh'd in](#image)
+6. [Sources](#sources)
 
 ## Implementation:
 
@@ -43,3 +44,12 @@ Here's a list of what should be done for moving forward with this to make it mor
 ### Image
 
 ![ssh'd_in](images/sub1-ssh-login.png)
+
+### Sources
+
+Multiple sources were used. Including:
+
+- Terraform.io - docs
+- medium.com
+- stackoverflow.com
+- cloud.google.com - docs

@@ -4,7 +4,7 @@ module "vpc" {
   nat_name   = "web1-nat"
   vpc_name   = "cf-vpc"
   route_mode = "GLOBAL"
-  project_id = "coalfire-poc"
+  project_id = var.project_id
 
   subnet1_name                 = "cf-sub-1"
   subnet1_cidr                 = "10.0.0.0/24"

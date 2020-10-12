@@ -7,7 +7,7 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_compute_subnetwork" "subnetwork-1" {
-  name          = var.subnet1
+  name          = var.subnet1_name
   ip_cidr_range = var.subnet1_cidr
   region        = var.subnet1_region
   network       = google_compute_network.vpc_network.self_link
@@ -18,7 +18,7 @@ resource "google_compute_subnetwork" "subnetwork-1" {
 }
 
 resource "google_compute_subnetwork" "subnetwork-2" {
-  name          = var.subnet2
+  name          = var.subnet2_name
   ip_cidr_range = var.subnet2_cidr
   region        = var.subnet2_region
   network       = google_compute_network.vpc_network.self_link
@@ -30,7 +30,7 @@ resource "google_compute_subnetwork" "subnetwork-2" {
 
 resource "google_compute_subnetwork" "subnetwork-3" {
   provider      = google-beta
-  name          = var.subnet3
+  name          = var.subnet3_name
   ip_cidr_range = var.subnet3_cidr
   region        = var.subnet3_region
   network       = google_compute_network.vpc_network.self_link
@@ -43,7 +43,7 @@ resource "google_compute_subnetwork" "subnetwork-3" {
 }
 
 resource "google_compute_subnetwork" "subnetwork-4" {
-  name          = var.subnet4
+  name          = var.subnet4_name
   ip_cidr_range = var.subnet4_cidr
   region        = var.subnet4_region
   network       = google_compute_network.vpc_network.self_link

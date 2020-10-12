@@ -28,7 +28,7 @@ variable "delete_default_routes" {
 }
 
 #Subnet 1 variables
-variable "subnet1" {
+variable "subnet1_name" {
   type        = string
   description = "name of the first subnet"
 }
@@ -54,7 +54,7 @@ variable "subnet1_cidr_secondary" {
 }
 
 # Subnet 2 variables
-variable "subnet2" {
+variable "subnet2_name" {
   type        = string
   description = "name of the second subnet"
 }
@@ -78,7 +78,7 @@ variable "subnet2_cidr_secondary" {
 }
 
 #Subnet 3 variables
-variable "subnet3" {
+variable "subnet3_name" {
   type        = string
   description = "name of the third subnet"
 }
@@ -103,7 +103,7 @@ variable "subnet3_cidr_secondary" {
 
 
 #Subnet 4 variables
-variable "subnet4" {
+variable "subnet4_name" {
   type        = string
   description = "name of the fourth subnet"
 }

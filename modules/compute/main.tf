@@ -15,7 +15,7 @@ resource "google_compute_disk" "private_disk1" {
 resource "google_compute_instance" "public_instance" {
   name         = var.public_compute_name
   machine_type = var.public_compute_type
-  zone         = "${module.vpc.subnetwork-1.region}-a"
+  zone         = "${var.public_region1}-a"
   tags         = ["ssh", "http"]
 
   boot_disk {
@@ -25,8 +25,8 @@ resource "google_compute_instance" "public_instance" {
   }
 
   network_interface {
-    network    = module.vpc.network_name
-    subnetwork = module.vpc.subnet1
+    network    = var.public_network
+    subnetwork = var.public_subnet
 
     access_config {}
   }
@@ -34,7 +34,7 @@ resource "google_compute_instance" "public_instance" {
 resource "google_compute_instance" "private_instance" {
   name         = var.private_compute_name
   machine_type = var.private_compute_type
-  zone         = "${module.vpc.subnetwork-3.region}-a"
+  zone         = "${var.private_region1}-a"
   tags         = ["ssh", "http"]
 
   boot_disk {
@@ -45,8 +45,8 @@ resource "google_compute_instance" "private_instance" {
 
   metadata_startup_script = "sudo dnf update; sudo dnf install -y apache2; sudo systemctl enable httpd; sudo systemctl start httpd"
   network_interface {
-    network    = module.vpc.vpc_network.name
-    subnetwork = module.vpc.subnetwork-3.name
+    network    = var.private_network
+    subnetwork = var.private_subnet
 
   }
 }

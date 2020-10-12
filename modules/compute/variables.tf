@@ -46,6 +46,16 @@ variable "public_compute_image" {
   type        = string
   description = "which image to install onto the compute instance"
 }
+variable "public_region1" {
+  type = string
+}
+variable "public_network" {
+  type = string
+}
+variable "public_subnet" {
+  type = string
+}
+
 
 # Private compute instance variables
 
@@ -61,4 +71,13 @@ variable "private_compute_type" {
 variable "private_compute_image" {
   type        = string
   description = "which image to install onto the compute instance"
+}
+variable "private_region1" {
+  type = string
+}
+variable "private_network" {
+  type = string
+}
+variable "private_subnet" {
+  type = string
 }

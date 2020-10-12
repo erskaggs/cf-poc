@@ -30,6 +30,12 @@ module "vpc" {
   subnet4_cidr_secondary       = "10.0.8.0/24"
 }
 
+module "firewall" {
+  source     = "./modules/firewall"
+  depends_on = [module.vpc]
+  vpc_name   = module.vpc.network_name
+}
+
 module "compute" {
   source     = "./modules/compute"
   project_id = var.project_id
@@ -59,5 +65,4 @@ module "compute" {
   private_disk_name = "private_disk"
   private_disk_type = "pd-standard"
   private_disk_size = "20"
-
 }

@@ -16,7 +16,7 @@ resource "google_compute_instance" "public_instance" {
   name         = var.public_compute_name
   machine_type = var.public_compute_type
   zone         = "${var.public_region1}-a"
-  tags         = ["ssh", "http"]
+  tags         = ["ssh", "http", "https"]
 
   boot_disk {
     initialize_params {
@@ -35,7 +35,7 @@ resource "google_compute_instance" "private_instance" {
   name         = var.private_compute_name
   machine_type = var.private_compute_type
   zone         = "${var.private_region1}-a"
-  tags         = ["ssh", "http"]
+  tags         = ["http", "https"]
 
   boot_disk {
     initialize_params {

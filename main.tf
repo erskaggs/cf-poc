@@ -55,7 +55,7 @@ module "compute" {
   public_compute_type  = "n2-standard-2"
   public_compute_image = "rhel-cloud/rhel-8"
 
-  public_disk_name = "public_disk"
+  public_disk_name = "public-disk"
   public_disk_type = "pd-standard"
   public_disk_size = "20"
 
@@ -63,7 +63,18 @@ module "compute" {
   private_compute_type  = "n2-standard-2"
   private_compute_image = "rhel-cloud/rhel-8"
 
-  private_disk_name = "private_disk"
+  private_disk_name = "private-disk"
   private_disk_type = "pd-standard"
   private_disk_size = "20"
+}
+
+module "load-balancer" {
+  source     = "./modules/load-balancer"
+  project_id = var.project_id
+  depends_on = [module.compute]
+
+  app_name            = "web-service"
+  vm_group_name       = "web-svc-1"
+  private_server_zone = "${module.vpc.subnet3_region}-a"
+  private_compute_1   = module.compute.private_compute1
 }

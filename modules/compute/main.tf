@@ -3,12 +3,14 @@ resource "google_compute_disk" "public_disk1" {
   type    = var.public_disk_type
   project = var.project_id
   size    = var.public_disk_size
+  zone    = "${var.public_region1}-b"
 }
 resource "google_compute_disk" "private_disk1" {
   name    = var.private_disk_name
   type    = var.private_disk_type
   project = var.project_id
   size    = var.private_disk_size
+  zone    = "${var.private_region1}-a"
 }
 
 

@@ -47,7 +47,8 @@ Here's a list of what should be done for moving forward with this to make it mor
 
 ### Sources
 
-Multiple sources were used. Including:
+Multiple sources were used as well as previous written code.
+Including:
 
 - Terraform.io - docs
 - medium.com
